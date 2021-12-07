@@ -18,4 +18,4 @@ You will be promoted file name just enter the file name and type like so.
 
 File Name: filename.txt
 
-You will be presented with a hash that is saved to the log file. When you would like to check the hash to see if changes have been made to the file run the same process.
+You will be presented with a hash that is saved to the log file. When you would like to check the hash to see if changes have been made to the file run the same process.If the file is not found you will be presented with an error.
