@@ -4,7 +4,7 @@ I will be working on this consistently until it is done.
 
 For now, it is remarkably simple, you must manually enter the file directory before running.
 
-It will print a hash then you must manually save this hash and check it again all manually yourself to see if the file has had any changes.
+It will print a hash that is saved to the log file check it again all manually yourself to see if the file has had any changes.
 
 Once done all this will be automatically done. You will enter the file or files you with to monitor, it will locate them and scan them at a set time you desire. It will then alert if any changes are made to the files effectively, letting you know someone might be trying to edit your files to hide something.
 
@@ -18,4 +18,4 @@ You will be promoted file name just enter the file name and type like so.
 
 File Name: filename.txt
 
-You will be presented with a hash that you can manually save. When you would like to check the hash to see if changes have been made to the file run the same process. 
+You will be presented with a hash that is saved to the log file. When you would like to check the hash to see if changes have been made to the file run the same process.
