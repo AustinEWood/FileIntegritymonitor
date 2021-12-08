@@ -9,36 +9,47 @@ logging.basicConfig(filename='logfile.log', level=logging.DEBUG)
 
 print('Thank you for using File Casket...')
 
-#print('type check file to check a file')
+time.sleep(1)
 
-#print('type clear to clear log file')
+print("What would you like to do?")
 
-#choice = input('what would you like to do: ')
+time.sleep(1)
+
+print("hash file, clear log, exit")
+
+choice = str(input())
+
+exit = "exit"
+
+hash = "hash file"
+
+clear = "clear log"
 
 directory = "/home/kali/Documents/projects/FileIntegrityMonitor/"
 
-FileName = input("File Name:")
+if choice == hash:
+    FileName = input("File Name:")
 
-Location = directory + FileName
+    Location = directory + FileName
 
-try:
-    with open(Location, "rb") as f:
-        file_hash = hashlib.md5()
-        while chunk := f.read(8192):
-            file_hash.update(chunk)
-            (file_hash.digest())
+    try:
+        with open(Location, "rb") as f:
+            file_hash = hashlib.md5()
+            while chunk := f.read(8192):
+                file_hash.update(chunk)
+                (file_hash.digest())
 
-            print(file_hash.hexdigest())
-except:
-    print("File not found!")
+        logging.info(FileName)  # this is how I log the hash to log file
+        logging.info(file_hash.hexdigest())
 
-try:
- logging.info(FileName)  # this is how I log the hash to log file
- logging.info(file_hash.hexdigest())
-except:
-    print("Please change file location!")
+        print(file_hash.hexdigest())
+    except:
+        print("File not found!")
+        print("Please try again...")
+elif choice == exit:
+    print("Thank you come again...")
 
-
-#a_file = open('logfile.log', 'w')  #this is how I clear the log file
-#a_file.truncate()
-#a_file.close()
+elif choice == clear:
+    a_file = open('logfile.log', 'w')  # this is how I clear the log file
+    a_file.truncate()
+    a_file.close()
