@@ -2,20 +2,28 @@ This is a simple file integrity monitor wrote in python named File Casket.
 
 I will be working on this consistently until it is done.
 
-For now, it is remarkably simple, you must manually enter the file directory before running.
+For now, it is remarkably simple.
 
-It will print a hash that is saved to the log file check it again all manually yourself to see if the file has had any changes.
+Put it in the main directory of the files you would like to monitor.
 
-Once done all this will be automatically done. You will enter the file or files you with to monitor, it will locate them and scan them at a set time you desire. It will then alert if any changes are made to the files effectively, letting you know someone might be trying to edit your files to hide something.
+Run filecasket.py in console.
 
+Make the selection you would like hash or check or clear.
 
+Hash:
+File name and type will be needed as so readme.txt this will find the file in the directory hash it and save it to the log file. As long as there is only one file with that name. I am working on how to handle files with the same name.
 
-For now, Edit line 24 directory = “/The/Directory/of/the/file/you/wish/to/monitor”
+Check:
+will find the file in the directory hash it and check the log file to see if the hash has changed. If the has has not changed it will tel you found in file, if the hash has changed it will say not found. As long as there is only one file with that name. I am working on how to handle files with the same name.
 
-And run in the terminal
+Clear:
+will do just that clear the log file.
 
-You will be promoted file name just enter the file name and type like so.
+For now the log file will save the location and name of the file on the first line, the hash on the second line, and the time and date of the hash will save under that.
 
-File Name: filename.txt
+I have many more features coming, please let me know of any ideas or anything I can fix!!!
 
-You will be presented with a hash that is saved to the log file. When you would like to check the hash to see if changes have been made to the file run the same process.If the file is not found you will be presented with an error.
+future features:
+constant running and check of file already hashed.
+alert if file has changed.
+hash all files in directory at one time.

@@ -1,0 +1,3 @@
+test_versions/
+__pycache__/
+.mypy_cache/
