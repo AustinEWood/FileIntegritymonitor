@@ -5,13 +5,13 @@ import datetime
 from pathlib import Path
 
 
-# Get date and time from the current os
+# Get date and time from the current os define it in a variable
 datetime_class = datetime.datetime.now()
-# Get file to log information to
+# Declare file to log information to
 logging.basicConfig(filename="logfile.log", level=logging.DEBUG)
 
 try:
-    def error_handle(errorcode):
+    def error_handle(errorcode):  # Define function
         if(errorcode == 1):
             print("Invalid File")
             if(errorcode == 2):
@@ -27,7 +27,7 @@ try:
         log_clear.close()  # close log file
         print("File has been cleared")
 except:
-    error_handle(2)  # if error message
+    error_handle(2)  # Error message
 
 # Get file function
 try:
@@ -43,55 +43,70 @@ try:
 except:
     error_handle(2)
 
-# Hash file and save to file
+# Hash file and log to file function
 try:
-    def hash_file():
-        path_to_file = get_file()
-        with open(path_to_file, "rb") as f:
-            file_hash = hashlib.md5()
+    def hash_file():  # Define function
+        path_to_file = get_file()  # Run get_file function to get path
+        with open(path_to_file, "rb") as f:  # Open path to find file
+            file_hash = hashlib.md5()  # Hash file
             while chunk := f.read(8192):
                 file_hash.update(chunk)
                 (file_hash.digest())
-                print(file_hash.hexdigest())
-                logging.info(path_to_file)
-                logging.info(file_hash.hexdigest())
+                print(file_hash.hexdigest())  # Print Hash
+                logging.info(path_to_file)  # Log path and name of file
+                logging.info(file_hash.hexdigest())  # Log hash
+                # Log date and time file was hashed
                 logging.info(datetime_class)
 except:
-    error_handle(2)
+    error_handle(2)  # Error message
 
+# check log file for hash a hash function
 try:
-    def recheck():
-        path_to_file = get_file()
+    def recheck():  # Define function
+        path_to_file = get_file()  # Run get_file function to get path
 
-        with open(path_to_file, "rb") as f:
-            file_hash = hashlib.md5()
+        with open(path_to_file, "rb") as f:  # Open path to find file
+            file_hash = hashlib.md5()   # Hash file
             while chunk := f.read(8192):
                 file_hash.update(chunk)
                 (file_hash.digest())
-                print(file_hash.hexdigest())
-                check__hash = file_hash.hexdigest()
+                print(file_hash.hexdigest())  # Print hash
+                check__hash = file_hash.hexdigest()  # Save hash to variable
 
-        log_check = open("logfile.log", "r")
-        read_log = log_check.read()
-        if check__hash in read_log:
-            print("hash", file_hash.hexdigest(), "found in file")
+        log_check = open("logfile.log", "r")  # Save log file to variable
+        read_log = log_check.read()  # Save read log file to variable
+        if check__hash in read_log:  # Check log file for hash
+            print("hash", file_hash.hexdigest(),
+                  "found in file")  # If hash found print
         else:
+            # If hash not found print
             print("hash", file_hash.hexdigest(), "not found")
 except:
-    error_handle(2)
+    error_handle(2)  # Error message
 
 
-print("hash or check or clear")
-choice = input("")
+# Ask what function to do
+def main():  # Define function
+    try:
+        if choice == "hash":  # If choice hash run hash_file function
+            hash_file()
+        elif choice == "clear":  # If choice clear run clear_file function
+            clear_file()
+        elif choice == "check":  # If choice check run recheck function
+            recheck()
+        else:
+            error_handle(1)  # Error message
+    except:
+        error_handle(1)  # Error message
 
-try:
-    if choice == "hash":
-        hash_file()
-    elif choice == "clear":
-        clear_file()
-    elif choice == "check":
-        recheck()
+
+# While loop to keep the programe running until you want to end it
+while True:
+    print("hash or check or clear or exit")  # Print message
+    choice = input("")  # Ask for input
+    if choice == "exit":  # Stop loop if input exit
+        break
     else:
-        error_handle(1)
-except:
-    error_handle(1)
+        main()  # Run main function if input anythin but exit
+        if input("Would you like to do more y/n:") == 'n':  # Ask for input
+            break  # Break loop if input n
