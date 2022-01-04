@@ -13,9 +13,9 @@ logging.basicConfig(filename="logfile.log", level=logging.DEBUG)
 try:
     def error_handle(errorcode):  # Define function
         if(errorcode == 1):
-            print("Invalid File")
+            print("Invalid File...")
         elif(errorcode == 2):
-            print("Did not work")
+            print("Not a choice...")
 except:
     print("Critical error")
 
@@ -70,7 +70,6 @@ try:
             while chunk := f.read(8192):
                 file_hash.update(chunk)
                 (file_hash.digest())
-                print(file_hash.hexdigest())  # Print hash
                 check__hash = file_hash.hexdigest()  # Save hash to variable
 
         log_check = open("logfile.log", "r")  # Save log file to variable
@@ -88,25 +87,23 @@ except:
 # Ask what function to do
 def main():  # Define function
     try:
-        if choice == "hash":  # If choice hash run hash_file function
+        if choice.casefold() == "hash":  # If choice hash run hash_file function
             hash_file()
-        elif choice == "clear":  # If choice clear run clear_file function
+        elif choice.casefold() == "clear":  # If choice clear run clear_file function
             clear_file()
-        elif choice == "check":  # If choice check run recheck function
+        elif choice.casefold() == "check":  # If choice check run recheck function
             recheck()
         else:
-            error_handle(1)  # Error message
+            error_handle(2)  # Error message
     except:
         error_handle(1)  # Error message
 
 
 # While loop to keep the programe running until you want to end it
 while True:
-    print("hash or check or clear or exit")  # Print message
+    print("Type Hash, Check, Clear, or Exit.")  # Print message
     choice = input("")  # Ask for input
-    if choice == "exit":  # Stop loop if input exit
+    if choice.casefold() == "exit":  # Stop loop if input exit
         break
     else:
         main()  # Run main function if input anythin but exit
-        if input("Would you like to do more y/n:") == 'n':  # Ask for input
-            break  # Break loop if input n
