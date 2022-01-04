@@ -1,6 +1,6 @@
-This is a simple file integrity monitor wrote in python named File Casket.
+This is a simple file integrity monitor written in python named File Casket.
 
-I will be working on this consistently until it is done.
+I will be working on this regularly until it is done.
 
 For now, it is remarkably simple.
 
@@ -8,7 +8,7 @@ Put it in the main directory of the files you would like to monitor.
 
 Run filecasket.py in console.
 
-Make the selection you would like hash or check or clear.
+Make the selection you would like select Hash, Check, or Clear.
 
 Hash:
 File name and type will be needed as so readme.txt this will find the file in the directory hash it and save it to the log file. As long as there is only one file with that name. I am working on how to handle files with the same name.

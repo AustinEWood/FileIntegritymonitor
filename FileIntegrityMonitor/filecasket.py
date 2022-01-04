@@ -14,8 +14,8 @@ try:
     def error_handle(errorcode):  # Define function
         if(errorcode == 1):
             print("Invalid File")
-            if(errorcode == 2):
-                print("Did not work")
+        elif(errorcode == 2):
+            print("Did not work")
 except:
     print("Critical error")
 
