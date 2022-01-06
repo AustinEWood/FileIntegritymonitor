@@ -27,3 +27,6 @@ future features:
 constant running and check of file already hashed.
 alert if file has changed.
 hash all files in directory at one time.
+
+
+this is a test
